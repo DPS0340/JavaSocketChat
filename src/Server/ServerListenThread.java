@@ -2,6 +2,7 @@ package Server;
 
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ServerListenThread implements Runnable {
     ServerSocket s;
@@ -11,12 +12,12 @@ public class ServerListenThread implements Runnable {
     @Override
     public void run() {
         try {
+            ArrayList<Socket> connList = new ArrayList<Socket>();
             while(true) {
                 System.out.println("서버에서 연결 대기 중...");
                 Socket toClient = this.s.accept();
+                connList.add(toClient);
                 System.out.println(toClient.getInetAddress());
-                Thread ServerIO = new Thread(new ServerReadWriteThread(toClient));
-                ServerIO.run();
             }
         } catch (java.io.IOException e) {
             e.printStackTrace();
