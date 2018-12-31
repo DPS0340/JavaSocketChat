@@ -9,12 +9,10 @@ public class ServerWriteThread implements Runnable {
     String line;
     public ServerWriteThread(Socket s, String line) {
         this.s = s;
+        this.line = line;
     }
     @Override
     public void run() {
-        writeline(line);
-    }
-    public void writeline(String line) {
         try {
             this.write = new PrintWriter(new BufferedWriter(new OutputStreamWriter(s.getOutputStream())));
             this.write.println(line);

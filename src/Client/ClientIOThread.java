@@ -30,6 +30,11 @@ public class ClientIOThread implements Runnable {
                 }
                 if (sc.hasNextLine()) {
                     this.writeline = sc.nextLine();
+                    if (this.writeline.equals("!quit")) {
+                        this.write.println(this.writeline);
+                        this.write.flush();
+                        s.close();
+                    }
                     this.write.println(this.writeline);
                     this.write.flush();
                 }
