@@ -25,8 +25,8 @@ public class ClientIOThread implements Runnable {
             this.write.flush();
             while (true) {
                 this.readline = this.read.readLine();
-                if (readline != null) {
-                    System.out.println(this.writeline);
+                if (this.readline != null) {
+                    System.out.println(this.readline);
                 }
                 if (sc.hasNextLine()) {
                     this.writeline = sc.nextLine();

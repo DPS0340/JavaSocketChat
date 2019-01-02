@@ -18,7 +18,7 @@ public class Server {
                 try {
                     currentThread.suspend();
                 } finally {
-                    currentThread = new Thread(new Core(connList));
+                    currentThread = new Thread(new ServerCoreConnection(connList));
                     currentThread.start();
                 }
             }
